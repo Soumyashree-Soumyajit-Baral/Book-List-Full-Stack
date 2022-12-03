@@ -1,0 +1,12 @@
+.logout{
+    position: absolute;
+    left: 75%;
+    top: 8%;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: black;
+    color: aliceblue;
+    width: 80px;
+    height: 30px;
+    padding-left: 20px;
+}
