@@ -8,7 +8,8 @@ img{
     width: 400px;
 }
 .container{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
 }
 .cards{
     border: 2px solid black;
@@ -16,10 +17,34 @@ img{
     height: 500px;
     width: 400px;
     margin: 15px;
+    /* cursor: pointer; */
 }
 .bbtn{
     border: 1px solid black;
     color: aliceblue;
     background-color: rgb(28, 0, 206);
     cursor: pointer;
+    border-radius: 5px;
+}
+.cart{
+    height: 30px;
+    width: 80px;
+    background-color: rgb(252, 0, 223);
+    font-weight: bolder;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btns{
+    display: flex;
+    justify-content: space-around;
+}
+.atc{
+    background-color: greenyellow;
+    font-weight: bolder;
+    border-radius: 5px;
+}
+.dlt{
+    background-color: rgb(255, 68, 47);
+    font-weight: bolder;
+    border-radius: 5px;
 }

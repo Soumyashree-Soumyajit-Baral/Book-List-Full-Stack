@@ -7,11 +7,11 @@ const cors=require("cors")
 const {existUser, genPassHash}=require("./utility/utility")
 const userModel=require("./models/usermodel")
 const bookModel =require("./models/bookmodel")
-
+// const express=require("express")
 
 const app=express()
 const unProtectedRoutes=["/signup","/login"]
-app.use(express.json())
+app.use(express.json({limit:"30mb"}))
 app.use(express.urlencoded({extended:false}))
 app.use(cors())
 app.use((req,res,next)=>{
@@ -115,3 +115,22 @@ app.post("/books",async(req,res)=>{
         })
     }
 })
+
+app.delete("/delete", async (req, res) => {
+    try {
+      const deleteitems = req.body.deleteitems;
+      const user = req.uname;
+      const deleted = await bookModel.updateOne(
+        { user: user },
+        { $pull: { books: { _id: { $in: deleteitems } } } }
+      );
+      if (deleted.modifiedCount) {
+        console.log("done")
+        res.status(200).send("Contacts Deleted Successfully");
+      } else {
+        res.status(200).send("There is no contacts to delete");
+      }
+    } catch {
+      res.status(400).send("An error occured while deleting");
+    }
+  });

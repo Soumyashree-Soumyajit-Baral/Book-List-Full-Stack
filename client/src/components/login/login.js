@@ -16,10 +16,12 @@ const Login = () => {
             data: { username: signupState.username, password: signupState.password }
         }).then((res) => {
             console.log(res.data)
+            
             localStorage.setItem("Authorization", res.data.authToken)
             navigate("/bookmark")
         }).catch((err) => {
-            console.log(err)
+            console.log(err.response.data)
+            alert(err.response.data)
         })
         navigate("/bookmark")
     }

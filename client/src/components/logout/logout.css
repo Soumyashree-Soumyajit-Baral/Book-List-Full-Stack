@@ -1,7 +1,7 @@
 .logout{
     position: absolute;
     left: 75%;
-    top: 8%;
+    top: 2%;
     cursor: pointer;
     font-weight: bold;
     background-color: black;
@@ -9,4 +9,5 @@
     width: 80px;
     height: 30px;
     padding-left: 20px;
+    border-radius: 5px;
 }
