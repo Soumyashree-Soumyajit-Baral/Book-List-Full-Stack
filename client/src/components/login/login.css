@@ -6,7 +6,7 @@
     width: 350px;
     border: 2px solid black;
     border-radius: 5px;
-    background-color: rgb(43, 0, 255);
+    background-color: rgb(255, 106, 0);
 }
 .login-innerContainer{
     position: relative;
@@ -22,6 +22,12 @@
     align-items: center;
     background-color: rgb(205, 197, 197);
 }
-.btn button{
+.pbtn,button{
     cursor: pointer;
+}
+.pbtn{
+    border: 1px solid black;
+    width: 80px;
+    background-color: aqua;
+    border-radius: 3px;
 }

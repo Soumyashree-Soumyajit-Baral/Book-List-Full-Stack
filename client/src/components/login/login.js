@@ -19,11 +19,13 @@ const Login = () => {
             
             localStorage.setItem("Authorization", res.data.authToken)
             navigate("/bookmark")
+            // navigate("/addbook")
         }).catch((err) => {
             console.log(err.response.data)
             alert(err.response.data)
         })
         navigate("/bookmark")
+        // navigate("/addbookk")
     }
 
     return (
@@ -42,7 +44,7 @@ const Login = () => {
                             <button onClick={handleLogin}>Submit</button>
                         </div>
                         <div>
-                            <p onClick={() => navigate("/signup")} className="btn">Sign-Up</p>
+                            <p onClick={() => navigate("/signup")} className="pbtn">Sign-Up</p>
                         </div>
                     </form>
                 </div>

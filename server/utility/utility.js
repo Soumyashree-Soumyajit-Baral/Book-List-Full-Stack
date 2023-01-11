@@ -3,11 +3,13 @@ const bcrypt=require("bcrypt")
 
 const existUser=async(uname)=>{
     let exist=false
-    userModel.find({username:uname}).then((data)=>{
+    await userModel.find({username:uname}).then((data)=>{
+        console.log(data)
         if(data.length){
             exist=true
         }
     })
+    console.log(exist,uname)
     return exist;
 }
 

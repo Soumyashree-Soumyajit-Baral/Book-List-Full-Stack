@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
-import "./addbook.css"
+import { context } from "../context/context";
+import "./edit.css"
 
 
-const Addbook = () => {
+const Editbook = () => {
     const [add, setAdd]=useState({})
     const [value,setvalue] = useState("No File Chosen")
+    const {bookdetails, setBookdetails, cbook, setCbook}=useContext(context)
     const navigate=useNavigate()
     
     const convertbase64 = (file)=> new Promise((res,rej)=>{
@@ -24,12 +26,13 @@ const Addbook = () => {
     }
     const handleAdd=()=>{
         const token=localStorage.getItem("Authorization")
+        console.log(cbook._id)
         if(!add.title || !add.isbn || !add.author || !add.describe || !add.publishdate || !add.publisher || !add.image){
             alert("please fill all the fields")
         }else{
             axios({
-                url:"http://localhost:3001/books",
-                method:"post",
+                url:`http://localhost:3001/edit/${cbook._id}`,
+                method:"put",
                 headers:{
                     authorization:token
                 },
@@ -53,10 +56,10 @@ const Addbook = () => {
     }
     return (
         <>
-            <div className="add-container">
+            <div className="edit-container">
                 <div className="add-innerContainer">
                     <form>
-                        <h2>Create new book</h2>
+                        <h2>Edit book</h2>
                         <div className='part1'>
                         {/* <span>
                           {value}
@@ -64,39 +67,39 @@ const Addbook = () => {
                         <label htmlFor='file'>
                             Book Image  :
                         </label>
-                        <input type="file" id="file" onChange={(e)=> onupload(e)} required/>
+                        <input type="file" id="file" onChange={(e)=> onupload(e)} required />
                     </div>
                         
                         <div>
                             <label for="title"> Title :</label>
-                            <input type="text"   name="title" id="title" onChange={(e) => { setAdd({ ...add, title: e.target.value }) }} required></input>
+                            <input type="text"   name="title" id="title"  onChange={(e) => { setAdd({ ...add, title: e.target.value }) }} required></input>
                         </div>
                         <div>
                             <span>ISBN :</span>
-                            <input type="text"   name="isbn" onChange={(e) => { setAdd({ ...add, isbn: e.target.value }) }} required></input>
+                            <input type="text"   name="isbn" onChange={(e) => { setAdd({ ...add, isbn: e.target.value }) }} required ></input>
                         </div>
                         <div>
                             <span>Author :</span>
-                            <input type="text"   name="author" onChange={(e) => { setAdd({ ...add, author: e.target.value }) }} required></input>
+                            <input type="text"   name="author" onChange={(e) => { setAdd({ ...add, author: e.target.value }) }} required ></input>
                         </div>
                         <div>
                             <span>Description :</span>
-                            <input type="text"   name="describe" onChange={(e) => { setAdd({ ...add, describe: e.target.value }) }} required></input>
+                            <input type="text"   name="describe" onChange={(e) => { setAdd({ ...add, describe: e.target.value }) }} required ></input>
                         </div>
                         <div>
                             <span>Publish_Date :</span>
-                            <input type="date"   name="publishdate" onChange={(e) => { setAdd({ ...add, publishdate: e.target.value }) }} required></input>
+                            <input type="date"   name="publishdate" onChange={(e) => { setAdd({ ...add, publishdate: e.target.value }) }} required ></input>
                         </div>
                         <div>
                             <span>Publisher :</span>
-                            <input type="text"   name="publisher" onChange={(e) => { setAdd({ ...add, publisher: e.target.value }) }} required></input>
+                            <input type="text"   name="publisher" onChange={(e) => { setAdd({ ...add, publisher: e.target.value }) }} required ></input>
                         </div>
                         <div>
                             <button onClick={handleAdd}>Submit</button>
                         </div>
-                        <div>
+                        {/* <div>
                             <button onClick={() => navigate("/bookmark")} className="btn">Show books</button>
-                        </div>
+                        </div> */}
                     </form>
                 </div>
             </div>
@@ -104,4 +107,4 @@ const Addbook = () => {
         </>
     )
 }
-export default Addbook
+export default Editbook

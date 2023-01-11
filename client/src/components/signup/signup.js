@@ -17,8 +17,10 @@ const Signup=()=>{
                 data:{username:signupState.username, password:signupState.password}
             }).then((res)=>{
                 console.log(res.data)
+                navigate("/")
             }).catch((err)=>{
                 console.log(err)
+                alert(err.response.data)
             })
         }else{
             alert("password didnot Match")

@@ -1,11 +1,11 @@
 .logout{
     position: absolute;
-    left: 75%;
+    left: 85%;
     top: 2%;
     cursor: pointer;
     font-weight: bold;
-    background-color: black;
-    color: aliceblue;
+    background-color: rgb(225, 20, 20);
+    color: rgb(0, 0, 0);
     width: 80px;
     height: 30px;
     padding-left: 20px;

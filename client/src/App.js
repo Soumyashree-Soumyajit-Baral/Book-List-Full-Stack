@@ -11,13 +11,16 @@ import Addbook  from './components/addbook/addbook';
 // import { useState } from 'react';
 import ContextProvider from './components/context/context';
 import Favorite from './components/cart/cart';
+import Editbook from './components/edit/edit';
 
 
 function App() {
   // const token=localStorage.getItem("Authorization")
   // const [cart,setCart]=useState([])
   // const navigate=useNavigate()
-  
+  // const nav=()=>{
+  //   navigate("/")
+  // }
   return (
     <>
     <ContextProvider>
@@ -32,6 +35,7 @@ function App() {
             <Route path="/bookmark" element={<Bookmark/>}></Route>
             <Route path="/addbook" element={<Addbook/>}></Route>
             <Route path="/favorite" element={<Favorite/>}></Route>
+            <Route path="/editbook" element={<Editbook/>}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

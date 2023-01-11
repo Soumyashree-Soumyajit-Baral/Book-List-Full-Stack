@@ -11,7 +11,7 @@ const bookModel =require("./models/bookmodel")
 
 const app=express()
 const unProtectedRoutes=["/signup","/login"]
-app.use(express.json({limit:"30mb"}))
+app.use(express.json({limit:"100mb"}))
 app.use(express.urlencoded({extended:false}))
 app.use(cors())
 app.use((req,res,next)=>{
@@ -77,7 +77,7 @@ app.post("/login",(req,res)=>{
                 }
             })
         }else{
-            res.status(400).send("unauthorized user")
+            res.status(400).send("Create an account before login")
         }
     })
 })
@@ -134,3 +134,27 @@ app.delete("/delete", async (req, res) => {
       res.status(400).send("An error occured while deleting");
     }
   });
+
+app.put("/edit/:id",(req,res)=>{
+    const bookID=req.params.id
+    console.log(bookID)
+    bookModel.updateOne(
+        {
+            "books._id":bookID
+        },
+        {
+            $set:{
+                "books.$.image":req.body.image,
+                "books.$.title":req.body.title,
+                "books.$.isbn":req.body.isbn,
+                "books.$.author":req.body.author,
+                "books.$.describe":req.body.describe,
+                "books.$.publishdate":req.body.publishdate,
+                "books.$.publisher":req.body.publisher
+            }
+        }).then(()=>{
+            res.status(200).send("Book updated sucessfully")
+        }).catch((err)=>{
+            res.status(400).send(err.message)
+        })
+})
