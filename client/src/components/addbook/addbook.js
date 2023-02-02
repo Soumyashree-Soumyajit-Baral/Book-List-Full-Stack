@@ -68,7 +68,7 @@ const Addbook = () => {
                     </div>
                         
                         <div>
-                            <label for="title"> Title :</label>
+                            <label htmlFor="title"> Title :</label>
                             <input type="text"   name="title" id="title" onChange={(e) => { setAdd({ ...add, title: e.target.value }) }} required></input>
                         </div>
                         <div>

@@ -86,7 +86,10 @@ app.get("/books", async (req, res) => {
     try {
       const user = req.uname;
       const data = await bookModel.find({ user });
+    //   console.log(data)
       const booksdata = data.map((d) => d.books);
+    //   console.log(booksdata)
+    //   console.log(...booksdata)
       res.status(200).send(...booksdata);
     } catch {
       res.status(400).send("An error occured while getting data");

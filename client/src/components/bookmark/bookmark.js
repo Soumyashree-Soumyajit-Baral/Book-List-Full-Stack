@@ -85,12 +85,12 @@ const Bookmark = () => {
             }
         }).then((res)=>{
             console.log(res.data)
-            setList([...res.data])
+            setList(res.data)
         }).catch((err)=>{
             console.log(err)
         })
         
-    },[list])
+    },[])
   return (
     <div className='parent'>
         <h1> Books List</h1>
