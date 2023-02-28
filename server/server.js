@@ -161,3 +161,8 @@ app.put("/edit/:id",(req,res)=>{
             res.status(400).send(err.message)
         })
 })
+
+app.get("/uname", (req,res)=>{
+    const userName= req.uname;
+    res.status(200).send(userName)
+})
