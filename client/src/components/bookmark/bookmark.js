@@ -9,6 +9,7 @@ import { context } from '../context/context'
 
 const Bookmark = () => {
     const [list, setList]=useState([])
+    const [uname, setUname]=useState("")
     const [item, setItem]=useState({})
     const {bookdetails, setBookdetails, cbook, setCbook}=useContext(context)
     const navigate=useNavigate()
@@ -89,6 +90,18 @@ const Bookmark = () => {
         }).catch((err)=>{
             console.log(err)
         })
+        axios({
+            url:"http://localhost:3001/uname",
+            method:"get",
+            headers:{
+                authorization:token
+            }
+        }).then((res)=>{
+            console.log(res.data)
+            setUname(res.data)
+        }).catch((err)=>{
+            console.log(err)
+        })
         
     },[])
   return (
@@ -99,6 +112,7 @@ const Bookmark = () => {
         <p onClick={()=>navigate("/favorite")} className="cart">Go to Cart</p>
         
         <p onClick={()=>navigate("/addbook")} className="bbtn">Add new Book</p>
+        <p className="bbtn">Welcome! {uname}</p>
         <Logout/>
         </div>
         <div className='container'>
