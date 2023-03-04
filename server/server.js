@@ -7,6 +7,7 @@ const cors=require("cors")
 const {existUser, genPassHash}=require("./utility/utility")
 const userModel=require("./models/usermodel")
 const bookModel =require("./models/bookmodel")
+const DATABASE= process.env.DATABASE
 // const express=require("express")
 
 const app=express()
@@ -34,18 +35,25 @@ app.use((req,res,next)=>{
 
 const port=process.env.PORT || 3001
 app.listen(port,(err)=>{
-    if(err){
-        console.log(err)
+    if(!err){
+      console.log(`server is connected to port ${port}`)
     }else{
-        console.log(`connected to port ${port}`)
+      console.log(err);
     }
-})
+  });
 
-mongoose.connect("mongodb://localhost/bookmark",()=>{
-    console.log("connected to db")
-},(err)=>{
-    console.log(err)
-})
+mongoose.connect(`${DATABASE}`,()=>{
+    console.log('connected to db');
+    // console.log(DATABASE)
+  },(err)=>{
+    console.log(err);
+  })
+
+// mongoose.connect("mongodb://localhost/bookmark",()=>{
+//     console.log("connected to db")
+// },(err)=>{
+//     console.log(err)
+// })
 
 
 app.post("/signup",async(req,res)=>{
