@@ -1,4 +1,4 @@
-.login-container{
+.login-container {
     position: absolute;
     top: 20%;
     left: 35%;
@@ -8,7 +8,8 @@
     border-radius: 5px;
     background-color: rgb(255, 106, 0);
 }
-.login-innerContainer{
+
+.login-innerContainer {
     position: relative;
     top: 20%;
     left: 14%;
@@ -22,10 +23,13 @@
     align-items: center;
     background-color: rgb(205, 197, 197);
 }
-.pbtn,button{
+
+.pbtn,
+button {
     cursor: pointer;
 }
-.pbtn{
+
+.pbtn {
     border: 1px solid black;
     width: 80px;
     background-color: aqua;

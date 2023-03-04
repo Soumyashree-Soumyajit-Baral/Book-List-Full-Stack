@@ -1,4 +1,4 @@
-.signup-container{
+.signup-container {
     position: absolute;
     top: 20%;
     left: 35%;
@@ -8,7 +8,8 @@
     border-radius: 5px;
     background-color: rgb(227, 143, 255);
 }
-.signup-innerContainer{
+
+.signup-innerContainer {
     position: relative;
     top: 20%;
     left: 14%;
@@ -22,10 +23,12 @@
     align-items: center;
     background-color: rgb(205, 197, 197);
 }
-button{
+
+button {
     cursor: pointer;
 }
-form p{
+
+form p {
     font-weight: bold;
     font-size: large;
 }
